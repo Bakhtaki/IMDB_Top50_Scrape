@@ -5,7 +5,8 @@ from tqdm import tqdm
 name = raw_input('Enter your name: ')
 year = str(int(raw_input('Enter the year: ')))
 sys.stdout = open(name + '_IMDB_Top_50_' + year + '_urllib3.txt', 'w')
-url = "http://www.imdb.com/search/title?release_date=" + year + "," + year + "&title_type=feature"
+url = "http://www.imdb.com/search/title?release_date=" + \
+    year + "," + year + "&title_type=feature"
 r = urllib3.PoolManager().request('GET', url).data
 soup = BeautifulSoup(r, "html.parser")
 article = soup.find('div', attrs={'class': 'article'}).find('h1')
